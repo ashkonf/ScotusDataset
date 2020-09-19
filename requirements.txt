@@ -1,0 +1,4 @@
+pdfminer==20200726
+peewee==3.11.2
+pandas==0.25.3
+numpy==1.17.4
