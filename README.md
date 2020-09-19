@@ -70,7 +70,7 @@ pip install -r requirements.txt
 
 The Python SCOTUS Dataset `recon` module exports two public functions for compiling data reconciliation.
 
-### compile_data()
+### Function: compile_data()
 
 The `compile_data()` function does the following:
 1. It iterates over the transcript PDFs in the data directory, parses them, and saves the extracted transcript data in the database.
@@ -79,11 +79,21 @@ The `compile_data()` function does the following:
 
 Upon completion, the database will contain a full set of case objects with associated SCDB data and transcripts.
 
-### print_coverage_stats()
+### Function: print_coverage_stats()
 
 The `print_coverage_stats()` function prints statistics describing the data compiled in the database.
 
+### Class: Case
+
+The `Case` class contains all case-related data, including a reference to the associated transcript.
+
+### Class: Transcript
+
+The `Transcript` class contains all transcript data.
+
 ## Example
+
+### Compiling Structured Data
 
 The code below compiles all case data and then prints statistics describing the data in the database:
 
@@ -94,7 +104,14 @@ compile_data()
 print_coverage_stats()
 ```
 
-This example provides the basic code needed to integrate Python SCOTUS Dataset with language-use analysis and case-outcome prediction.
+### Using Compiled Data
+
+```bash
+from models import Case
+
+for case in Case.select():
+  print(case.docket, case.transcript)
+```
 
 ## License
 
